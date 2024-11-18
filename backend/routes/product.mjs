@@ -13,17 +13,24 @@ const router = new Router()
 
 const imageAPIKey = 'ce27330d1b0650de28d068b9e40df50a'
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './images')
-  },
-  filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname))
+// Konfigurasi penyimpanan di memori
+const storage = multer.memoryStorage()
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    // Validasi file: hanya izinkan file gambar
+    const filetypes = /jpeg|jpg|png|gif/
+    const extname = filetypes.test(file.originalname.toLowerCase())
+    const mimetype = filetypes.test(file.mimetype)
+
+    if (extname && mimetype) {
+      cb(null, true)
+    } else {
+      cb(new Error('Only images are allowed'))
+    }
   },
 })
-
-const upload = multer({ storage: storage })
 
 router.post('/api/upload', upload.single('image'), async (req, res) => {
   if (!req.file) {
