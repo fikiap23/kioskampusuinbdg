@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import image from '../assets/image-masuk.jpg';
-import { useNavigate, Link } from 'react-router-dom';
-import { useUser } from '../UserContext';
+import React, { useState } from 'react'
+import image from '../assets/image-masuk.jpg'
+import { useNavigate, Link } from 'react-router-dom'
+import { useUser } from '../UserContext'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showAlert, setShowAlert] = useState(false);
-  const navigate = useNavigate();
-  const { setUser } = useUser();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
+  const navigate = useNavigate()
+  const { setUser } = useUser()
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const userData = {
       email: email,
       password: password,
-    };
-    fetch('http://localhost:5000/api/signin', {
+    }
+    fetch('https://kioskampusuinbdg-sigma.vercel.app/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON',
@@ -25,30 +25,38 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.user);
-        setUser(data.user);
-        setShowAlert(true);
+        console.log(data.user)
+        setUser(data.user)
+        setShowAlert(true)
         setTimeout(() => {
-          setShowAlert(false);
-          navigate('/home');
-        }, 1500);
+          setShowAlert(false)
+          navigate('/home')
+        }, 1500)
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return (
     <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row w-screen h-screen">
-      <img src={image} className="w-full md:w-1/2 lg:w-1/2 h-1/3 md:h-screen object-cover" alt="Login Illustration" />
+      <img
+        src={image}
+        className="w-full md:w-1/2 lg:w-1/2 h-1/3 md:h-screen object-cover"
+        alt="Login Illustration"
+      />
       <div className="py-6 w-full md:w-1/2 flex flex-col justify-center items-center h-full">
-        <h1 className="text-center mb-10 text-2xl md:text-3xl lg:text-4xl font-semibold">Welcome Back!</h1>
-        <p className='text-sm mb-3'>Enter your email and password to continue</p>
+        <h1 className="text-center mb-10 text-2xl md:text-3xl lg:text-4xl font-semibold">
+          Welcome Back!
+        </h1>
+        <p className="text-sm mb-3">
+          Enter your email and password to continue
+        </p>
         <div className="flex bg-[#EAECEB] w-fit rounded-xl p-1 mb-5">
           <div className="bg-white p-2 cursor-pointer rounded-l-xl w-25 text-center">
             Sign In
           </div>
-          <Link to={"/regis"}>
+          <Link to={'/regis'}>
             <div className="p-2 cursor-pointer rounded-r-xl w-25 text-center hover:bg-white">
               Sign Up
             </div>
@@ -86,7 +94,7 @@ const Login = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

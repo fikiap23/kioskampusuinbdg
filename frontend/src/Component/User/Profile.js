@@ -13,7 +13,7 @@ const Profile = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${user_id}`)
+    fetch(`https://kioskampusuinbdg-sigma.vercel.app/api/products/${user_id}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok')
@@ -29,7 +29,7 @@ const Profile = () => {
   }, [])
 
   const handleLogout = () => {
-    const confirmLogout = window.confirm("Apakah Anda yakin ingin keluar?");
+    const confirmLogout = window.confirm('Apakah Anda yakin ingin keluar?')
     if (confirmLogout) {
       localStorage.removeItem('currentUser')
       setUser(null)
@@ -38,9 +38,11 @@ const Profile = () => {
   }
 
   const handleDelete = () => {
-    const confirmDelete = window.confirm("Apakah Anda yakin ingin menghapus akun Anda?");
+    const confirmDelete = window.confirm(
+      'Apakah Anda yakin ingin menghapus akun Anda?'
+    )
     if (confirmDelete) {
-      fetch(`http://localhost:5000/api/user/${user_id}`, {
+      fetch(`https://kioskampusuinbdg-sigma.vercel.app/api/user/${user_id}`, {
         method: 'DELETE',
       })
         .then((response) => {
@@ -66,7 +68,7 @@ const Profile = () => {
       <Navbar />
       <div className="px-16 py-8">
         <div>
-          <div className='font-semibold text-md mb-2'>Your Profile</div>
+          <div className="font-semibold text-md mb-2">Your Profile</div>
           <div className="flex w-full justify-evenly border border-spacing-1 border-slate-400 rounded-xl">
             <div className="flex flex-col items-center">
               <PiUserCircle className="text-9xl text-gray-800 mb-5" />
@@ -84,20 +86,20 @@ const Profile = () => {
               </button>
             </div>
 
-            <div className='flex flex-col justify-center items-start gap-4'>
+            <div className="flex flex-col justify-center items-start gap-4">
               <div>
-                <div className='text-xs font-light italic'>Full Name</div>
-                <div className='text-lg'>{user.name}</div>
+                <div className="text-xs font-light italic">Full Name</div>
+                <div className="text-lg">{user.name}</div>
               </div>
 
               <div>
-                <div className='text-xs font-light italic'>Email</div>
-                <div className='text-lg'>{user.email}</div>
+                <div className="text-xs font-light italic">Email</div>
+                <div className="text-lg">{user.email}</div>
               </div>
 
               <div>
-                <div className='text-xs font-light italic'>WhatsApp Number</div>
-                <div className='text-lg'>{user.no_wa}</div>
+                <div className="text-xs font-light italic">WhatsApp Number</div>
+                <div className="text-lg">{user.no_wa}</div>
               </div>
 
               <Link to={'/edit-profile'}>
@@ -109,10 +111,9 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      
 
       <div className="px-16 py-8">
-        <div className='text-md font-semibold mb-2'>My Product</div>
+        <div className="text-md font-semibold mb-2">My Product</div>
         <div className="border border-slate-400 rounded-xl text-left">
           {products ? (
             products.map((product) => (
