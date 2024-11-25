@@ -7,9 +7,9 @@ export const userValidation = {
             errorMessage: "Username must be a string"
         }
     },
-    email: {
+    username: {
         notEmpty: {
-            errorMessage: "Email is required"
+            errorMessage: "Username is required"
         }
     },
     no_wa: {

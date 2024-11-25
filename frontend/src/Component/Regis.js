@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Regis = () => {
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [no_wa, setNoWa] = useState('')
   const [password, setPassword] = useState('')
   const [showAlert, setShowAlert] = useState(false)
@@ -15,7 +15,7 @@ const Regis = () => {
     event.preventDefault()
     const userData = {
       name: name,
-      email: email,
+      username: username,
       no_wa: no_wa,
       password: password,
     }
@@ -71,17 +71,17 @@ const Regis = () => {
                 />
               </div>
               <div>
-                <p>Email</p>
+                <p>Username</p>
                 <input
                   className="px-2 text-xs w-full h-10 border border-slate-400 rounded-md hover:border-green-400"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
                 />
               </div>
               <div>
                 <p>WhatsApp Numbers</p>
                 <input
-                  className="px-2 text-xs w-full h-10 border border-slate-400 rounded-md hover:border-green-400"
+                  className="placeholder px-2 text-xs w-full h-10 border border-slate-400 rounded-md hover:border-green-400"
                   value={no_wa}
                   onChange={(event) => setNoWa(event.target.value)}
                 />

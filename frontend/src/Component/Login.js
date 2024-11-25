@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useUser } from '../UserContext'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const userData = {
-      email: email,
+      username: username,
       password: password,
     }
     fetch('https://kioskampusuinbdg-sigma.vercel.app/api/signin', {
@@ -50,7 +50,7 @@ const Login = () => {
           Welcome Back!
         </h1>
         <p className="text-sm mb-3">
-          Enter your email and password to continue
+          Enter your username and password to continue
         </p>
         <div className="flex bg-[#EAECEB] w-fit rounded-xl p-1 mb-5">
           <div className="bg-white p-2 cursor-pointer rounded-l-xl w-25 text-center">
@@ -64,11 +64,11 @@ const Login = () => {
         </div>
         <div className="flex flex-col md:w-1/2 lg:w-2/5 mb-3 gap-4">
           <div>
-            <p>Email</p>
+            <p>Username</p>
             <input
               className="hover:border-green-400 px-2 text-xs w-full h-10 border border-slate-400 rounded-md"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
             />
           </div>
           <div>
