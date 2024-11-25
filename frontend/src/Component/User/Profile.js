@@ -93,7 +93,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <div className="text-xs font-light italic">Email</div>
+                <div className="text-xs font-light italic">Username</div>
                 <div className="text-lg">{user.email}</div>
               </div>
 
