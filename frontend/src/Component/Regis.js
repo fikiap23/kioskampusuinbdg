@@ -71,7 +71,7 @@ const Regis = () => {
                 />
               </div>
               <div>
-                <p>Email</p>
+                <p>Username</p>
                 <input
                   className="px-2 text-xs w-full h-10 border border-slate-400 rounded-md hover:border-green-400"
                   value={email}
