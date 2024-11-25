@@ -31,15 +31,15 @@ router.post('/api/signup',
 
         const data = matchedData(req);
         data.password = hashPassword(data.password)
-        const { name, username, no_wa, password } = data;
+        const { name, email, no_wa, password } = data;
         try {
-            const existingUser = await User.findOne({ where: { username } });
+            const existingUser = await User.findOne({ where: { email } });
             if (existingUser) {
-            console.log('Username sudah terdaftar');
+            console.log('Email sudah terdaftar');
             return;
             }
 
-            const newUser = await User.upsert({name, username, no_wa, password})
+            const newUser = await User.upsert({name, email, no_wa, password})
             res.status(201).json(data);
         } catch (err) {
             console.error(err);

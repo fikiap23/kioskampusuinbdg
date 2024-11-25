@@ -79,7 +79,7 @@ const ProductDetail = () => {
 
               <div className="flex flex-col space-y-4">
                 <h1 className="text-lg font-bold text-gray-900">
-                  {product.product_name}
+                  Novel: {product.product_name}
                 </h1>
                 <Link
                   to={`/seller-profile?id=${seller.user_id}`}

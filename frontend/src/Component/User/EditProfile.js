@@ -90,11 +90,11 @@ const EditProfile = () => {
           </div>
 
           <div className="flex mb-4">
-            <div className="w-72 font-medium">Username</div>
+            <div className="w-72 font-medium">Email</div>
             <input
               className="flex pl-4 w-full bg-gray-100 rounded-xl p-1 mb-5"
-              name="username"
-              value={user?.username || ''}
+              name="email"
+              value={user?.email || ''}
               onChange={handleChange}
             />
           </div>
